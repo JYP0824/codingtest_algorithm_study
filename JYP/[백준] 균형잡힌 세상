@@ -1,0 +1,39 @@
+# .이 들어오면 그만돌도록함
+# ')'이 들어왔을 때 stk에 '('이 있으면 pop, 없으면 False, break
+# 마지막으로 for문 다 돌았는데 ans가 True, stk가 비었으면 yes, 아니면 no 출력
+
+while True:
+    a = input()
+    
+    if a == '.':
+        break
+    stk = []
+    ans = True
+
+    for g in a:
+        if g =='(' or g == '[':
+            stk.append(g)
+        elif g == ')':
+            if len(stk) == 0:
+                ans = False
+                break
+            if stk[-1] == '(':       
+                stk.pop()
+            else:
+                ans=False
+                break
+        elif g ==']':
+            if len(stk) == 0:
+                ans = False
+                break
+            if stk[-1] == '[':
+                stk.pop()
+            else:
+                ans = False
+                break
+    
+    
+    if ans and not stk:
+        print("yes")
+    else:
+        print("no")
